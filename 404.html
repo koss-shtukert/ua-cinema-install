@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111111">
+  <title>UA Cinema</title>
+  <script>
+    const parts = location.pathname.split('/').filter(Boolean);
+    const maybeShareId = parts[parts.length - 1] || '';
+
+    if (parts.includes('s') && maybeShareId) {
+      location.replace(`/ua-cinema-install/s/?id=${encodeURIComponent(maybeShareId)}`);
+    } else {
+      location.replace('/ua-cinema-install/');
+    }
+  </script>
+</head>
+<body>
+  <p>Redirecting...</p>
+</body>
+</html>
