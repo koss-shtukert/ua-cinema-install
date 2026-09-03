@@ -43,8 +43,7 @@
       min-height: 100svh;
       overflow-x: hidden;
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background:
-        linear-gradient(180deg, #0057b8 0 48%, #ffd700 48% 100%);
+      background: #0057b8;
       color: var(--text);
     }
 
@@ -405,6 +404,7 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
+      margin-top: 8px;
       padding: 8px 11px;
       border: 1px solid rgba(255, 215, 0, 0.42);
       border-radius: 999px;
@@ -417,9 +417,18 @@
     h1 {
       max-width: 590px;
       margin: 12px 0 14px;
-      font-size: clamp(34px, 4.4vw, 54px);
+      font-size: clamp(52px, 6.8vw, 84px);
       line-height: 1.04;
       letter-spacing: 0;
+    }
+
+    .tagline {
+      margin: -6px 0 0;
+      color: var(--muted);
+      font-size: clamp(22px, 2.4vw, 28px);
+      font-weight: 400;
+      letter-spacing: 0.16em;
+      text-transform: lowercase;
     }
 
     .lead {
@@ -438,11 +447,12 @@
     }
 
     .button {
-      min-height: 48px;
+      min-height: 56px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 0 17px;
+      padding: 0 26px;
+      font-size: 17px;
       border: 1px solid transparent;
       border-radius: var(--radius);
       background: linear-gradient(180deg, #f03a47, var(--red));
@@ -460,7 +470,7 @@
 
     .status {
       min-height: 22px;
-      margin-top: 12px;
+      margin-top: 6px;
       color: rgba(255, 255, 255, 0.68);
       font-size: 14px;
     }
@@ -484,80 +494,28 @@
 
     .showcase {
       position: relative;
-      min-height: clamp(430px, 54vh, 500px);
-    }
-
-    .poster-wall {
-      position: absolute;
-      inset: 0 0 auto auto;
-      width: min(100%, 660px);
-      height: clamp(260px, 35vh, 320px);
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 10px;
-      transform: perspective(1100px) rotateY(-8deg) rotateX(2deg);
-      transform-origin: center;
+      gap: 14px;
+      align-content: center;
+      min-height: 0;
     }
 
-    .poster {
+    /* TV + phone: обгортка, щоб телефон акуратно накладався на TV
+       лише коли є місце, а на вужчих екранах падав у потік. */
+    .devices {
       position: relative;
-      min-height: 150px;
-      overflow: hidden;
-      border: 1px solid rgba(255, 255, 255, 0.16);
-      border-radius: 8px;
-      background: #111;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.28);
+      display: grid;
+      padding-bottom: 26px;
     }
-
-    .poster::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background-image: var(--img);
-      background-size: cover;
-      background-position: center;
-      filter: saturate(1.06) contrast(1.08);
-    }
-
-    .poster::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(180deg, transparent 28%, rgba(0, 0, 0, 0.7)),
-        linear-gradient(135deg, rgba(0, 87, 184, 0.28), rgba(255, 215, 0, 0.18));
-    }
-
-    .poster span {
-      position: absolute;
-      left: 10px;
-      right: 10px;
-      bottom: 9px;
-      z-index: 1;
-      font-size: 12px;
-      font-weight: 850;
-    }
-
-    .poster:nth-child(1) { --img: url("https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=520&q=78"); }
-    .poster:nth-child(2) { --img: url("https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=520&q=78"); }
-    .poster:nth-child(3) { --img: url("https://images.unsplash.com/photo-1505686994434-e3cc5abf1330?auto=format&fit=crop&w=520&q=78"); }
-    .poster:nth-child(4) { --img: url("https://images.unsplash.com/photo-1512070679279-8988d32161be?auto=format&fit=crop&w=520&q=78"); }
-    .poster:nth-child(5) { --img: url("https://images.unsplash.com/photo-1440404653325-ab127d49abc1?auto=format&fit=crop&w=520&q=78"); }
-    .poster:nth-child(6) { --img: url("https://images.unsplash.com/photo-1524985069026-dd778a71c7b4?auto=format&fit=crop&w=520&q=78"); }
-    .poster:nth-child(7) { --img: url("https://images.unsplash.com/photo-1521967906867-14ec9d64bee8?auto=format&fit=crop&w=520&q=78"); }
-    .poster:nth-child(8) { --img: url("https://images.unsplash.com/photo-1497032628192-86f99bcd76bc?auto=format&fit=crop&w=520&q=78"); }
 
     .device {
-      position: absolute;
       border: 1px solid rgba(255, 255, 255, 0.2);
       background: var(--surface-strong);
       box-shadow: 0 26px 70px var(--shadow);
     }
 
     .tv {
-      left: 34px;
-      right: 24px;
-      bottom: 46px;
+      width: 100%;
       padding: 12px;
       border-radius: 8px;
     }
@@ -616,11 +574,14 @@
     }
 
     .phone {
-      width: clamp(168px, 18vw, 204px);
-      right: 0;
-      bottom: 0;
+      width: clamp(150px, 15vw, 190px);
       padding: 9px;
       border-radius: 28px;
+      /* На широких екранах телефон акуратно накладається на кут TV. */
+      position: absolute;
+      right: 0;
+      bottom: -18px;
+      z-index: 2;
     }
 
     .phone-screen {
@@ -674,20 +635,53 @@
     }
 
     @media (max-width: 960px) {
+      /* Showcase (TV + телефон) ховаємо, лишається тільки текст із кнопкою. */
+      .showcase {
+        display: none;
+      }
+
+      /* Увесь контент центруємо по висоті й ширині екрана. */
       .page {
-        min-height: auto;
+        min-height: 100svh;
+        justify-content: center;
       }
 
       .hero {
+        flex: 0 1 auto;
         grid-template-columns: 1fr;
+        justify-content: center;
+        align-content: center;
+        gap: 22px;
+      }
+
+      .hero > section:first-child {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .hero > section:first-child h1,
+      .hero > section:first-child .lead {
+        margin-inline: auto;
+      }
+
+      .actions,
+      .chips {
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .page {
+        width: min(100% - 24px, 620px);
+        padding: 14px 0 28px;
+      }
+
+      .hero {
+        padding: 16px 0 4px;
         gap: 18px;
       }
-
-      .showcase {
-        order: -1;
-        min-height: 430px;
-      }
-
     }
 
     @media (max-width: 560px) {
@@ -695,57 +689,22 @@
         width: min(100% - 24px, 440px);
       }
 
-      .nav {
-        align-items: flex-start;
-        flex-direction: column;
-      }
-
-      .release-link {
-        display: none;
-      }
-
       h1 {
-        font-size: 36px;
+        font-size: clamp(46px, 13vw, 60px);
       }
 
       .lead {
         font-size: 16px;
       }
 
-      .showcase {
-        min-height: 420px;
+      /* Splash масштабуємо під малий екран. */
+      .intro-icon {
+        width: clamp(112px, 30vw, 148px);
+        height: clamp(112px, 30vw, 148px);
       }
 
-      .poster-wall {
-        height: 238px;
-        grid-template-columns: repeat(3, 1fr);
-      }
-
-      .poster {
-        min-height: 120px;
-      }
-
-      .poster:nth-child(n + 7) {
-        display: none;
-      }
-
-      .tv {
-        left: 0;
-        right: 18px;
-        bottom: 42px;
-      }
-
-      .tv-copy {
-        width: 64%;
-        margin-top: 20px;
-      }
-
-      .tv-copy h2 {
-        font-size: 21px;
-      }
-
-      .phone {
-        width: 146px;
+      .intro-wordmark {
+        font-size: clamp(28px, 8vw, 36px);
       }
     }
 
@@ -783,34 +742,15 @@
     </div>
   </div>
   <div class="page">
-    <nav class="nav" aria-label="Навігація">
-      <a class="brand" href="/ua-cinema-install/">
-        <img class="app-icon" src="ua-cinema.png" alt="">
-        <span class="wordmark">
-          <span class="wordmark-ua">UA</span>
-          <span class="wordmark-cinema">Cinema</span>
-        </span>
-      </a>
-      <a class="release-link" href="https://github.com/koss-shtukert/rd_flutter_project/releases/latest">
-        Останній реліз
-      </a>
-    </nav>
-
     <main class="hero">
       <section>
-        <span class="badge">Кіно, серіали й мультфільми українською</span>
         <h1>
           <span class="wordmark">
             <span class="wordmark-ua">UA</span>
             <span class="wordmark-cinema">Cinema</span>
           </span>
-          для телефону й телевізора
         </h1>
-        <p class="lead">
-          Один додаток для вечірнього перегляду: фільми, серіали, аніме,
-          мультфільми, профілі, обране, продовження з місця зупинки та
-          Chromecast для великого екрана.
-        </p>
+        <p class="tagline">дивись українською</p>
 
         <div class="actions">
           <a id="downloadApk" class="button" href="https://github.com/koss-shtukert/rd_flutter_project/releases/latest">
@@ -818,6 +758,8 @@
           </a>
         </div>
         <div id="releaseStatus" class="status">Шукаємо актуальну версію...</div>
+
+        <span class="badge">Кіно, серіали й мультфільми українською</span>
 
         <div class="chips">
           <span class="chip">Android телефон</span>
@@ -828,46 +770,37 @@
       </section>
 
       <section class="showcase" aria-label="Вигляд додатку на TV і телефоні">
-        <div class="poster-wall" aria-hidden="true">
-          <div class="poster"><span>Фільми</span></div>
-          <div class="poster"><span>Серіали</span></div>
-          <div class="poster"><span>Аніме</span></div>
-          <div class="poster"><span>Мультфільми</span></div>
-          <div class="poster"><span>Добірки</span></div>
-          <div class="poster"><span>Премʼєри</span></div>
-          <div class="poster"><span>Обране</span></div>
-          <div class="poster"><span>Продовжити</span></div>
-        </div>
-
-        <div class="device tv">
-          <div class="tv-screen">
-            <div class="tv-nav">
-              <span class="wordmark">
-                <span class="wordmark-ua">UA</span>
-                <span class="wordmark-cinema">Cinema</span>
-              </span>
-              <div class="tv-tabs">
-                <span>Головна</span>
-                <span>Фільми</span>
-                <span>Серіали</span>
+        <div class="devices">
+          <div class="device tv">
+            <div class="tv-screen">
+              <div class="tv-nav">
+                <span class="wordmark">
+                  <span class="wordmark-ua">UA</span>
+                  <span class="wordmark-cinema">Cinema</span>
+                </span>
+                <div class="tv-tabs">
+                  <span>Головна</span>
+                  <span>Фільми</span>
+                  <span>Серіали</span>
+                </div>
+              </div>
+              <div class="tv-copy">
+                <h2>Вечірній перегляд</h2>
+                <p>Каруселі, категорії й швидкий запуск з пульта.</p>
               </div>
             </div>
-            <div class="tv-copy">
-              <h2>Вечірній перегляд</h2>
-              <p>Каруселі, категорії й швидкий запуск з пульта.</p>
-            </div>
           </div>
-        </div>
 
-        <div class="device phone">
-          <div class="phone-screen">
-            <div class="phone-notch"></div>
-            <div class="phone-title">Продовжити перегляд</div>
-            <div class="phone-button">Дивитись</div>
-            <div class="mini-list">
-              <div class="mini-line"></div>
-              <div class="mini-line"></div>
-              <div class="mini-line"></div>
+          <div class="device phone">
+            <div class="phone-screen">
+              <div class="phone-notch"></div>
+              <div class="phone-title">Продовжити перегляд</div>
+              <div class="phone-button">Дивитись</div>
+              <div class="mini-list">
+                <div class="mini-line"></div>
+                <div class="mini-line"></div>
+                <div class="mini-line"></div>
+              </div>
             </div>
           </div>
         </div>
