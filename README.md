@@ -1,71 +1,40 @@
-# UA Cinema Install
+# UA Cinema
 
-Static GitHub Pages site for installing UA Cinema and opening shared links.
+UA Cinema - це додаток для перегляду фільмів, серіалів, аніме та
+мультфільмів українською мовою на Android телефоні або Android TV.
 
-Published site:
+## Встановити
 
-```text
-https://koss-shtukert.github.io/ua-cinema-install/
-```
+Завантажити останню Android APK версію:
 
-Latest Android release:
+[Завантажити APK](https://github.com/koss-shtukert/rd_flutter_project/releases/latest)
 
-```text
-https://github.com/koss-shtukert/rd_flutter_project/releases/latest
-```
+Або відкрити сторінку встановлення:
 
-Live update manifest:
+[https://koss-shtukert.github.io/ua-cinema-install/](https://koss-shtukert.github.io/ua-cinema-install/)
 
-```text
-https://pub-b9c840137f154243adcb0088e4afba66.r2.dev/updates.json
-```
+## Що вміє додаток
 
-## What Is UA Cinema
+- фільми, серіали, аніме та мультфільми українською мовою;
+- зручний плеєр з вибором якості;
+- продовження перегляду з того місця, де зупинився;
+- обране;
+- профілі;
+- синхронізація між пристроями після входу;
+- підтримка Android TV і Chromecast.
 
-UA Cinema is a Flutter app for Ukrainian movies, series, anime, cartoons, and
-Android TV playback. It merges multiple content sources into one catalog,
-supports HLS playback, Chromecast, profiles, favorites, and continue watching.
+## Посилання від друзів
 
-## Install
+Якщо тобі надіслали посилання UA Cinema, відкрий його на телефоні. Якщо додаток
+вже встановлений, він відкриє потрібний фільм, серіал або серію. Якщо додатку
+ще немає, сторінка запропонує встановити останню версію.
 
-Open the install page:
+## Оновлення
 
-```text
-https://koss-shtukert.github.io/ua-cinema-install/
-```
+Додаток може перевіряти наявність нової версії під час запуску. Якщо оновлення
+доступне, у меню зʼявиться дія для встановлення нової APK.
 
-The page reads the latest Android APK URL from `updates.json`. If that request
-is unavailable in the browser, it falls back to the latest GitHub Release.
+## Важливо
 
-## Shared Links
-
-Shared UA Cinema links use HTTPS first:
-
-```text
-https://koss-shtukert.github.io/ua-cinema-install/s/?id=<share-id>
-```
-
-The page then tries to open the app:
-
-```text
-uacinema://share/<share-id>
-```
-
-Pretty links also work through `404.html` fallback:
-
-```text
-https://koss-shtukert.github.io/ua-cinema-install/s/<share-id>
-```
-
-## GitHub Pages Setup
-
-In this repository:
-
-1. Open `Settings`.
-2. Open `Pages`.
-3. Set `Source` to `Deploy from a branch`.
-4. Select branch `main`.
-5. Select folder `/root`.
-6. Save.
-
-GitHub Pages will publish `index.html` from the repository root.
+UA Cinema встановлюється як APK поза Google Play. Android може показати
+попередження перед встановленням - це стандартна поведінка для APK-файлів.
